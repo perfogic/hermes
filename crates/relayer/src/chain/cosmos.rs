@@ -723,15 +723,6 @@ impl CosmosSdkChain {
             ));
         }
 
-        let grpc_status = self.chain_grpc_status()?;
-
-        if grpc_status.syncing {
-            return Err(Error::chain_not_caught_up(
-                self.config.grpc_addr.to_string(),
-                self.config().id.clone(),
-            ));
-        }
-
         Ok(rpc_status)
     }
 
